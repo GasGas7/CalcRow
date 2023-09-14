@@ -4,33 +4,41 @@ class Row extends React.Component {
     }
 
     toggleRaw = () => {
-
+        const { isEnabled } = this.props.row;
+        const toggledValue = !isEnabled;
+        this.props.onToggle(this.props.index, toggledValue);
     };
 
-    inputChange = () => {
-
+    inputChange = (e) => {
+        const { value } = e.target;
+        const inputValue = isNaN(value) || value === "" ? 0 : parseFloat(value);
+        this.props.onInputChange(this.props.index, inputValue);
     };
 
-    selectChange = () => {
-
+    selectChange = (e) => {
+        const { value } = e.target;
+        this.props.onSelectChange(this.props.index, value);
     };
 
     render() {
+        const { inputValue, operator, isEnabled } = this.props.row;
+
         return (
             <div className="row">
-                <button onClick>
-                    ABILITA/DISABILITA ROW
+                <button onClick={this.toggleRaw}>
+                    {isEnabled ? "Disabilita" : "Abilita"}
                 </button>
                 <input
                     type="text"
-                    value="0"
-                    disabled="false"
+                    value={inputValue}
+                    disabled={!isEnabled}
+                    onChange={this.inputChange}
                 />
-                <select value="+/-" onChange disabled="false">
+                <select value={operator} onChange={this.selectChange} disabled={!isEnabled}>
                     <option value="+">+</option>
                     <option value="-">-</option>
                 </select>
             </div>
         );
     }
-}
+};
