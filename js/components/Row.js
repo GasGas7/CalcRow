@@ -17,7 +17,7 @@ class Row extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="row">
                 <button onClick>
                     ABILITA/DISABILITA ROW
                 </button>
