@@ -25,16 +25,17 @@ class Row extends React.Component {
 
         return (
             <div className="row">
-                <button onClick={this.toggleRaw}>
+                <button className="toggleButton" onClick={this.toggleRaw}>
                     {isEnabled ? "Disabilita" : "Abilita"}
                 </button>
                 <input
+                    className="input-number"
                     type="text"
                     value={inputValue}
                     disabled={!isEnabled}
                     onChange={this.inputChange}
                 />
-                <select value={operator} onChange={this.selectChange} disabled={!isEnabled}>
+                <select className="select-op" value={operator} onChange={this.selectChange} disabled={!isEnabled}>
                     <option value="+">+</option>
                     <option value="-">-</option>
                 </select>

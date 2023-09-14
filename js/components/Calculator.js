@@ -67,7 +67,7 @@ class Calculator extends React.Component {
             if (isNaN(current.input)) return tot;
 
             tot += current.operator === "+" ? parseFloat(current.input) : -parseFloat(current.input)
-            console.log("tot>>>>>",tot)
+            console.log("tot>>>>>", tot)
             return tot;
         }
 
@@ -79,21 +79,30 @@ class Calculator extends React.Component {
 
     render() {
         return (
-            <div className="calculator">
-                <button onClick={this.addRow}>Aggiungi Riga</button>
-                <button onClick={this.rmRow}>Rimuovi Riga</button>
-                {this.state.rows.map((row, index) => (
-                    <Row
-                        key={index}
-                        row={row}
-                        index={index}
-                        onInputChange={this.onInputChange}
-                        onSelectChange={this.onSelectChange}
-                        onToggle={this.onToggleRow}
-                    />
-                ))}
-                <div>
-                    Risultato: <span>{this.state.total}</span>
+            <div className="d-flex">
+                <div className="sidebar">
+                    <div className="logo">LOGO</div>
+                    <div className="app-calc">
+                        Calculator-row
+                    </div>
+                </div>
+                <div className="calculator d-flex flex-column">
+                    <div><button className="add-row-btn" onClick={this.addRow}>Aggiungi Riga</button>
+                    <button className="rm-row-btn" onClick={this.rmRow}>Rimuovi Riga</button></div>
+                    
+                    {this.state.rows.map((row, index) => (
+                        <Row
+                            key={index}
+                            row={row}
+                            index={index}
+                            onInputChange={this.onInputChange}
+                            onSelectChange={this.onSelectChange}
+                            onToggle={this.onToggleRow}
+                        />
+                    ))}
+                    <div className="results">
+                        Risultato: <span>{this.state.total}</span>
+                    </div>
                 </div>
             </div>
         );
