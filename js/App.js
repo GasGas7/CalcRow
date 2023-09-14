@@ -2,11 +2,19 @@ class App extends React.Component {
     constructor() {
         super()
     }
+
+    render() {
+        return (
+            <div>
+                <Calculator/>
+            </div>
+        )
+    }
 }
 
 ReactDOM.render(
     <div>
-        Sanity Check
+        <App/>
     </div>,
     document.getElementById('app')
 );
