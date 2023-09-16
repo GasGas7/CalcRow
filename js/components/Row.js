@@ -24,22 +24,30 @@ class Row extends React.Component {
         const { inputValue, operator, isEnabled } = this.props.row;
 
         return (
-            <div className="row">
-                <button className="toggleButton" onClick={this.toggleRaw}>
-                    {isEnabled ? "Disabilita" : "Abilita"}
-                </button>
-                <input
-                    className="input-number"
-                    type="text"
-                    value={inputValue}
-                    disabled={!isEnabled}
-                    onChange={this.inputChange}
-                />
-                <select className="select-op" value={operator} onChange={this.selectChange} disabled={!isEnabled}>
-                    <option value="+">+</option>
-                    <option value="-">-</option>
-                </select>
+
+            <div className="row-container d-flex justify-content-center align-items-center">
+                <div className="col-3">
+                    <button className="toggleButton" onClick={this.toggleRaw}>
+                        {isEnabled ? "Disabilita" : "Abilita"}
+                    </button>
+                </div>
+                <div className="col-6">
+                    <input
+                        className="input-number form-control"
+                        type="number"
+                        value={inputValue}
+                        disabled={!isEnabled}
+                        onChange={this.inputChange}
+                    />
+                </div>
+                <div className="col-3">
+                    <select className="select-op form-control text-center" value={operator} onChange={this.selectChange} disabled={!isEnabled}>
+                        <option value="+">+</option>
+                        <option value="-">-</option>
+                    </select>
+                </div>
             </div>
+
         );
     }
 };
