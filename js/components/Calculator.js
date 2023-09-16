@@ -64,7 +64,7 @@ class Calculator extends React.Component {
 
     totalCalc = () => {
         const sum = (tot, current) => {
-            if (isNaN(current.input)) return tot;
+            if (!current.isEnabled || isNaN(current.input)) return tot;
 
             tot += current.operator === "+" ? parseFloat(current.input) : -parseFloat(current.input)
             console.log("tot>>>>>", tot)
@@ -87,9 +87,10 @@ class Calculator extends React.Component {
                     </div>
                 </div>
                 <div className="calculator d-flex flex-column">
-                    <div><button className="add-row-btn" onClick={this.addRow}>Aggiungi Riga</button>
-                    <button className="rm-row-btn" onClick={this.rmRow}>Rimuovi Riga</button></div>
-                    
+                    <div>
+                        <button className="add-row-btn" onClick={this.addRow}>Aggiungi Riga</button>
+                        <button className="rm-row-btn" onClick={this.rmRow}>Rimuovi Riga</button>
+                    </div>
                     {this.state.rows.map((row, index) => (
                         <Row
                             key={index}
